@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Data Redundancy Removal System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <div>
+        <h1>Cloud Data Redundancy Removal System</h1>
+        <p>Validate, verify and prevent redundant data</p>
+    </div>
+
+    <span class="status-badge">● System Online</span>
+</header>
+
+<main class="container">
+
+    <section class="stats-grid">
+        <div class="stat-card">
+            <h3>Unique Records</h3>
+            <p id="uniqueRecords">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Duplicate Attempts</h3>
+            <p id="duplicateAttempts">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Validation Events</h3>
+            <p id="validationEvents">0</p>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Add New Record</h2>
+
+        <p class="description">
+            Enter the data below. The system validates and checks
+            for duplicates before storing it.
+        </p>
+
+        <form id="recordForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="John Smith"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="john@example.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="+91 98765 43210"
+                    >
+                </div>
+
+            </div>
+
+            <button type="submit" id="submitButton">
+                Verify & Save Record
+            </button>
+
+        </form>
+
+        <div id="result" class="result hidden"></div>
+    </section>
+
+    <section class="card">
+
+        <div class="section-header">
+            <div>
+                <h2>Stored Records</h2>
+                <p class="description">
+                    Unique verified records currently stored.
+                </p>
+            </div>
+
+            <button
+                class="secondary-button"
+                onclick="loadDashboard()"
+            >
+                Refresh
+            </button>
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                    </tr>
+                </thead>
+
+                <tbody id="recordsTableBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>CodeAlpha Cloud Computing Internship — Task 1</p>
+</footer>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
